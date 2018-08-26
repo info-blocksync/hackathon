@@ -1,0 +1,136 @@
+#contenedor-general{
+    width: 860px;
+    margin: 0 auto;
+
+}
+
+h1{
+    text-align: center;
+    
+}
+
+h2{
+    margin-bottom: 50px;
+    text-align: center;
+
+}
+
+#alice-phone-container{
+    width: 377px;
+    height: 651px;
+    background: url(../img/rsp_phone.png);
+    float: left;
+}
+
+#bob-phone-container{
+    width: 377px;
+    height: 651px;
+    background: url(../img/rsp_phone.png) no-repeat;
+    float: right;
+}
+
+#form{
+    position: relative;
+    top: 119px;
+    left: 20px;
+}
+
+#alice_message{
+    height: 34px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 267px;
+    background: transparent;
+    
+    padding-left: 30%;
+}
+
+#bob_message{
+    height: 34px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 267px;
+    background: transparent;
+
+    padding-left: 30%;
+}
+
+#btn-send-message{
+    position: relative;
+    top: 78px;
+    left: 300px;
+}
+
+#btn-send-message:hover{
+    cursor: pointer;
+}
+
+#bob-screen{
+    position: relative;
+    top: 100px;
+    left: 30px;  
+    width: 100px; 
+    height: 400px;
+    padding-right: 190px;
+}
+
+#alice-screen{
+    position: relative;
+    top: 100px;
+    left: 30px;  
+    width: 100px; 
+    height: 400px;
+    padding-right: 190px;
+}
+
+#mensaje-enviando{
+
+    
+    width: 50px;
+    height: 50px;
+
+    top: -350px;
+    left: 55px;
+
+    position: relative;
+
+}
+
+#mensaje-enviando img{
+    border: 5px solid gray;
+}
+
+.mensaje-enviado{
+    font-size: 24px;
+    font-weight: bold;
+    background-color: coral;
+    padding: 10px;
+    margin-top: 10px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    letter-spacing: 5px;
+}
+
+
+.mensaje-recibido{
+    font-size: 24px;
+    font-weight: bold;
+    background-color: darkkhaki;
+    padding: 10px;
+    margin-top: 10px;
+
+    border-radius: 15px;
+
+
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+    overflow:hidden; overflow-y:scroll;
+}

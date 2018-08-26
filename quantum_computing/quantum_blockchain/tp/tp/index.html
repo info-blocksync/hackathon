@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="css/estilo.css" type="text/css">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="contenedor-general">
+
+        <h1>Alice & Bob - Quantum Rock/Scissor/Paper Contest</h1>
+
+        <h2>Select a message (Two classical bits) from Alice's Phone or Bob's Phone. The option of Rock/Scissor/Paper will be sent to Ethereum via Qubit.</h2>
+
+        <div id="alice-phone-container">
+
+
+            <ul id="alice-screen">
+
+            </ul>            
+
+            <form id="form" action="submit_to_qvm_and_evm.php" method="GET">
+
+        
+                <select id="alice_message">
+                
+                    <!-- 00 is ignored to map RSP 3 status only -->
+                    <!--option>00</option-->
+                    <option>01</option>
+                    <option>10</option>
+                    <option>11</option>
+                </select>
+            
+            </form>
+
+            <img id="btn-send-message" src="img/send_button.png">
+            
+        </div>
+
+        <div id="bob-phone-container">
+            <ul id="bob-screen">
+
+            </ul>
+            <form id="form" action="submit_to_qvm_and_evm.php" method="GET">
+
+
+                <select id="bob_message">
+
+                    <!-- 00 is ignored to map RSP 3 status only -->
+                    <!--option>00</option-->
+                    <option>01</option>
+                    <option>10</option>
+                    <option>11</option>
+                </select>
+
+            </form>
+
+            <img id="btn-send-message" src="img/send_button.png">
+
+        </div>
+
+        </div>
+    
+    </div>
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+
+        $("#mensaje-enviando").hide();
+
+        $("#btn-send-message").click(
+            function()
+            {
+                // event.preventDefault();
+                $.ajax({
+                        data:  {
+                                alice_message: $("#alice_message").val(),
+                                bob_message: $("#bob_message").val()
+                            },
+
+                        url:   'submit_to_qvm_and_evm.php',
+
+                        method:  'POST',
+                        crossDomain: true,
+                        beforeSend: function () {
+                            $("#mensaje-enviando").show();
+		            console.log("Inspecting states");
+                            console.log("alice=" + $("#alice_message").val());
+                            console.log("bob=" + $("#bob_message").val());
+                            $("#alice-screen").append('<li class="mensaje-enviado">' +  $("#alice_message").val() + "</li>" );
+                            $("#bob-screen").append('<li class="mensaje-enviado">' +  $("#bob_message").val() + "</li>" );
+                        },
+
+                        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                            console.log("PHP PyQuil Alice resp: 01");
+                            console.log("PHP PyQuil Bob resp: 11");
+                            // $("#bob-screen").append('<li class="mensaje-recibido">' + response + "</li>" );
+                            // $("#mensaje-enviando").hide();
+                        }
+                });
+
+
+
+            }
+            
+        );
+
+
+
+    </script>
+
+</body>
+
+</html>
